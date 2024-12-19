@@ -21,7 +21,7 @@
     <h1>Character Translator</h1>
     <label for="inputText">Enter text:</label><br>
     <input type="text" id="inputText" placeholder="Type here..." oninput="translateText()"><br>
-    <button onclick="copyToClipboard()">Dubbelklicka här!</button>
+    <button onclick="copyPaste()">klicka här!</button>
     <h3>Output:</h3>
     <div id="output"></div>
     
@@ -36,6 +36,10 @@
                 .replace(/'/g, '\\');
             
             document.getElementById('output').innerText = output;
+        }
+        function copyPaste() {
+            copyToClipboard();
+            pasteToClipboard();
         }
 
         function copyToClipboard() {
@@ -52,10 +56,12 @@
                 .replace(/\//g, '&')
                 .replace(/\*/g, '|')
                 .replace(/'/g, '\\');
-            
+        
+        }
+        function pasteToClipboard() {
             document.getElementById('output').innerText = output;
             const outputText = document.getElementById('output').innerText;
-            navigator.clipboard.writeText(output)
+            navigator.clipboard.writeText(outputText)
                 .catch(err => {
                     alert('Failed to copy: ', err);
                 });
