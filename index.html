@@ -55,7 +55,7 @@
             
             document.getElementById('output').innerText = output;
             const outputText = document.getElementById('output').innerText;
-            navigator.clipboard.writeText(outputText)
+            navigator.clipboard.writeText(output)
                 .catch(err => {
                     alert('Failed to copy: ', err);
                 });
