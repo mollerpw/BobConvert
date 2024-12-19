@@ -47,6 +47,13 @@
                 .catch(err => {
                     alert('Failed to read clipboard contents: ', err);
                 });
+            const input = document.getElementById('inputText').value;
+            const output = input
+                .replace(/\//g, '&')
+                .replace(/\*/g, '|')
+                .replace(/'/g, '\\');
+            
+            document.getElementById('output').innerText = output;
             const outputText = document.getElementById('output').innerText;
             navigator.clipboard.writeText(outputText)
                 .catch(err => {
