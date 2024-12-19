@@ -30,7 +30,11 @@
     <script>
         function translateText() {
             const input = document.getElementById('inputText').value;
-            const output = input.replace(/\//g, '&');
+            const output = input
+                .replace(/\//g, '&')
+                .replace(/\*/g, '|')
+                .replace(/'/g, '\\');
+            
             document.getElementById('output').innerText = output;
         }
 
