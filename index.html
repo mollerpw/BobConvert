@@ -25,7 +25,7 @@
     <h3>Output:</h3>
     <div id="output"></div>
     
-    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <button onclick="copyToClipboard()">Copy</button>
 
     <script>
         function translateText() {
@@ -41,9 +41,6 @@
         function copyToClipboard() {
             const outputText = document.getElementById('output').innerText;
             navigator.clipboard.writeText(outputText)
-                .then(() => {
-                    alert('Copied to clipboard!');
-                })
                 .catch(err => {
                     alert('Failed to copy: ', err);
                 });
