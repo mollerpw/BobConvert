@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Character Translator</h1>
+    <label for="inputText">Enter text:</label><br>
+    <input type="text" id="inputText" placeholder="Type here..." oninput="translateText()"><br>
+    
+    <h3>Output:</h3>
+    <div id="output"></div>
+    
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
 
+    <script>
+        function translateText() {
+            const input = document.getElementById('inputText').value;
+            const output = input.replace(/\//g, '&');
+            document.getElementById('output').innerText = output;
+        }
+
+        function copyToClipboard() {
+            const outputText = document.getElementById('output').innerText;
+            navigator.clipboard.writeText(outputText)
+                .then(() => {
+                    alert('Copied to clipboard!');
+                })
+                .catch(err => {
+                    alert('Failed to copy: ', err);
+                });
+        }
+    </script>
+</body>
+</html>
